@@ -33,7 +33,7 @@ app.put('/curso', async(req, res) => {
     console.log(typeof(req.body.fechaInicio));
     console.log(req.body);
 
-    await actualizar(req.body.nombre, req.body.nivelTecnico, req.body.fechaInicio, req.body.duracion);
+    await actualizar(req.body.id, req.body.nombre, req.body.nivelTecnico, req.body.fechaInicio, req.body.duracion);
     res.json({ Todo: 'ok' })
 });
 

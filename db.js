@@ -35,17 +35,18 @@ async function consultar() {
     return result.rows;
 };
 
-async function actualizar(nombre, nivelTecnico, fechaInicio, duracion) {
+async function actualizar(id, nombre, nivelTecnico, fechaInicio, duracion) {
     let client
     client = await pool.connect();
 
 
     const nt = parseInt(nivelTecnico);
     const dr = parseInt(duracion);
+    const id_act = parseInt(id);
 
     let res = await client.query({
-        text: `update cursos set nivel=$2, fecha=$3, duracion=$4 where nombre = $1`,
-        values: [nombre, nt, fechaInicio, dr]
+        text: `update cursos set nombre=$2, nivel=$3, fecha=$4, duracion=$5 where id = $1`,
+        values: [id, nombre, nt, fechaInicio, dr]
     });
     client.release();
 };
